@@ -1,9 +1,8 @@
 import { FlatList, View, StyleSheet, Text } from 'react-native';
+import RepositoryItem from "./RepositoryItem"
 
 const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
+  separator: { height: 10 },
 });
 
 const repositories = [
@@ -51,24 +50,36 @@ const repositories = [
     reviewCount: 0,
     ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
   },
+  {
+    id: 'reduxjs.redux2',
+    fullName: 'reduxjs/redux2',
+    description: 'Predictable state container for JavaScript apps',
+    language: 'TypeScript',
+    forksCount: 13902,
+    stargazersCount: 52869,
+    ratingAverage: 0,
+    reviewCount: 0,
+    ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
+  },
 ];
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
 
-  const renderItem = ({ item }) => (
-    <Text>kek</Text>
-  );
-
   return (
     <FlatList
+      keyExtractor={(item) => item.id}
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       // other props
-      renderItem={renderItem}
+      renderItem={({ item }) => {
+        return <RepositoryItem item={item} />
+      }}
     />
   );
 };
 
 export default RepositoryList;
+
+
