@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
 
+    paddingBottom: 2,
+    paddingRight: 10,
   },
 
 })
