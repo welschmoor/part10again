@@ -22,8 +22,8 @@ const Main = () => {
       <AppBar />
 
       <Routes>
-        <Route path="/signin" element={<SignIn />} exact />
-        <Route path="/" element={<RepositoryList />} exact />
+        <Route path="/" element={<SignIn />} exact />
+        <Route path="/repositories" element={<RepositoryList />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

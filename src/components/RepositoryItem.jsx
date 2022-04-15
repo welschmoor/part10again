@@ -19,7 +19,6 @@ const RepositoryItem = ({ item }) => {
       return String(num).slice(0, 3) + "." + String(num).slice(3, 4) + 'K'
     }
     else if (String(num).length === 5) {
-      console.log("len", num.length)
       return String(num).slice(0, 2) + "." + String(num).slice(2, 3) + 'K'
     }
     else if (String(num).length === 4) {
