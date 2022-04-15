@@ -4,25 +4,25 @@ import { StatusBar } from "react-native"
 
 import BodyMassIndexCalculator from './src/BodyMassIndexCalculator'
 
-const App = () => {
-  return (
-    <>
-
-      <BodyMassIndexCalculator />
-
-      <StatusBar style="auto" />
-    </>);
-};
-
 // const App = () => {
 //   return (
 //     <>
-//       <NativeRouter>
-//         <Main />
-//       </NativeRouter>
+
+//       <BodyMassIndexCalculator />
+
 //       <StatusBar style="auto" />
 //     </>);
 // };
+
+const App = () => {
+  return (
+    <>
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
+      <StatusBar style="auto" />
+    </>);
+};
 
 
 export default App;

@@ -1,11 +1,23 @@
 import { Formik } from 'formik';
 import Text from './Text';
 import FormikForm from './FormikForm'
+import * as yup from 'yup';
 
 const initialValues = {
   name: '',
   password: ''
 }
+
+const validationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, 'Name must be at least 3 chars long')
+    .required('name is required'),
+  password: yup
+    .string()
+    .min(3, 'Password must be longer than 3 characters')
+    .required('password is required'),
+});
 
 const SignIn = () => {
   const onSubmit = (values) => {
@@ -13,13 +25,8 @@ const SignIn = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <Formik initialValues={initialValues} onSubmit={onSubmit} >
-      {({handleSubmit}) => <FormikForm onSubmit={handleSubmit} />}
-=======
-    <Formik onSubmit={onSubmit} initialValues={initialValues} >
-      {(handleSubmit) => <FormikForm onSubmit={handleSubmit} />}
->>>>>>> 200b25b09e4bf65490768cb12ee90627fb9d27b3
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+      {({ handleSubmit }) => <FormikForm onSubmit={handleSubmit} />}
     </Formik>
   )
 };

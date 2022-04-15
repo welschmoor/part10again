@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     borderRadius: 2,
 
   },
+  containerError: {
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: 'red',
+    borderRadius: 2,
+
+  },
   input: {
     padding: 7,
     marginLeft: 8,
@@ -28,7 +35,7 @@ const FormikTextInput = ({ name, ...props }) => {
   const showError = meta.touched && meta.error;
 
   return (
-    <View style={styles.container}>
+    <View style={showError ? styles.containerError : styles.container} >
       <TextInput
         style={styles.input}
         onChangeText={value => helpers.setValue(value)}
