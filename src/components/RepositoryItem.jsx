@@ -36,7 +36,7 @@ const RepositoryItem = ({ item }) => {
         <View style={styles.needsShrinking}>
           <Text style={styles.headerText}>{item.fullName}</Text>
           <Text style={styles.descriptionText}>{item.description}</Text>
-          <Text style={styles.languageText}>{item.language}</Text>
+          <View style={styles.languageButton}><Text style={styles.languageText}>{item.language}</Text></View>
         </View>
       </PicAndText>
 
@@ -70,21 +70,31 @@ const styles = StyleSheet.create({
   headerText: { color: 'black', fontSize: 18, fontWeight: '700', marginBottom: 5, },
   descriptionText: { color: '#333', fontSize: 16, fontWeight: '400', marginBottom: 8, },
   boldText: { fontSize: 14, fontWeight: '700', },
-  languageText: {
+  languageButton: {
     backgroundColor: "#7757CC",
     fontSize: 16,
     fontWeight: '700',
     marginBottom: 5,
     color: "white",
     padding: 5,
-    maxWidth: 120,
+    // maxWidth: 120,
     display: 'flex',
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 7,
     minHeight: 32,
-
+    borderRadius: 7,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 5,
+    paddingTop: 5,
+    alignSelf: 'flex-start', // this is how to prevent a button (View) from occupying the whole width.
   },
+  languageText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: '700',
+    
+  }
 
 });
 
