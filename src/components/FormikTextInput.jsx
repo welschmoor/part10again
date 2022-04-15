@@ -28,4 +28,4 @@ const FormikTextInput = ({ name, ...props }) => {
   );
 };
 
-export default FormikTextInput;
+export default FormikTextInput
