@@ -5,19 +5,12 @@ import { ApolloProvider } from '@apollo/client';
 import createApolloClient from './src/utils/apolloClient';
 const apolloClient = createApolloClient();
 
-import BodyMassIndexCalculator from './src/BodyMassIndexCalculator'
+import Constants from 'expo-constants';
 
-// const App = () => {
-//   return (
-//     <>
-
-//       <BodyMassIndexCalculator />
-
-//       <StatusBar style="auto" />
-//     </>);
-// };
 
 const App = () => {
+  console.log(Constants.manifest, "Constants.manifest");
+
   return (
     <>
       <NativeRouter>
@@ -29,5 +22,25 @@ const App = () => {
     </>);
 };
 
-
 export default App;
+
+
+
+
+
+
+
+
+
+
+// OLD CODE
+// import BodyMassIndexCalculator from './src/BodyMassIndexCalculator'
+// const App = () => {
+  //   return (
+    //     <>
+
+//       <BodyMassIndexCalculator />
+
+//       <StatusBar style="auto" />
+//     </>);
+// };
