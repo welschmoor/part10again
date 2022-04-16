@@ -1,6 +1,9 @@
 import Main from './src/components/Main';
 import { NativeRouter } from 'react-router-native';
 import { StatusBar } from "react-native"
+import { ApolloProvider } from '@apollo/client';
+import createApolloClient from './src/utils/apolloClient';
+const apolloClient = createApolloClient();
 
 import BodyMassIndexCalculator from './src/BodyMassIndexCalculator'
 
@@ -18,7 +21,9 @@ const App = () => {
   return (
     <>
       <NativeRouter>
-        <Main />
+        <ApolloProvider client={apolloClient}>
+          <Main />
+        </ApolloProvider>
       </NativeRouter>
       <StatusBar style="auto" />
     </>);

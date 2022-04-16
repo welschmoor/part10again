@@ -6,7 +6,7 @@ const theme = {
     textSecondary: '#586069',
     primary: '#0366d6',
     white: '#f4f4f4',
-    text: Platform.OS === 'android' ? 'white' : 'black',
+    text: Platform.OS === 'android' ? 'white' : 'white',
   },
   fontSizes: {
     body: 14,

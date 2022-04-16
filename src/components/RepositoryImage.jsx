@@ -15,13 +15,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoryImage = () => {
+const RepositoryImage = ({ imgURL }) => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.tinyLogo}
         source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
+          uri: imgURL,
+          // uri: 'https://reactnative.dev/img/tiny_logo.png',
         }}
       />
     </View>

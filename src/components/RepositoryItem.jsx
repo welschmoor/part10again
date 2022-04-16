@@ -1,38 +1,22 @@
+import { reduceNum } from '../utils/helperfunctions';
 import { View, StyleSheet } from 'react-native';
-import Text from "./Text"
 import RepositoryImage from './RepositoryImage';
+import Text from "./Text"
 
 //styles
-import PicAndText from "./PicAndText"
-import FlexCon from "./FlexCon"
 import FCIC from "./FlexConItemContainer"
+import PicAndText from "./PicAndText"
 import theme from '../STYLES/theme';
+import FlexCon from "./FlexCon"
+
 
 const RepositoryItem = ({ item }) => {
-
-
-  const reduceNum = (num) => { // this function turns number 39,149 into 39K
-
-    if (String(num).length === 7) {
-      return String(num).slice(0, 1) + "." + String(num).slice(4, 5) + 'M'
-    }
-    else if (String(num).length === 6) {
-      return String(num).slice(0, 3) + "." + String(num).slice(3, 4) + 'K'
-    }
-    else if (String(num).length === 5) {
-      return String(num).slice(0, 2) + "." + String(num).slice(2, 3) + 'K'
-    }
-    else if (String(num).length === 4) {
-      return String(num).slice(0, 1) + "." + String(num).slice(1, 2) + 'K'
-    }
-  }
-
 
   return (
     <View style={styles.container}>
       {/* <Text>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</Text> */}
       <PicAndText>
-        <RepositoryImage />
+        <RepositoryImage imgURL={item.ownerAvatarUrl} />
         <View style={styles.needsShrinking}>
           <Text style={styles.headerText}>{item.fullName}</Text>
           <Text style={styles.descriptionText}>{item.description}</Text>
@@ -59,7 +43,6 @@ const RepositoryItem = ({ item }) => {
 }
 
 export default RepositoryItem
-
 
 const styles = StyleSheet.create({
   needsShrinking: {
@@ -93,7 +76,7 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     fontSize: 16,
     fontWeight: '700',
-    
+
   }
 
 });

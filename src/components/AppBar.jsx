@@ -6,7 +6,7 @@ import { Route, Routes, Navigate, Link, } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
+    height: 48,
     display: 'flex',
     flexDirection: "row",
     paddingLeft: 20,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#ffffff',
-    marginRight: 20,
+    marginRight: 30,
     fontSize: 18,
   }
 });
