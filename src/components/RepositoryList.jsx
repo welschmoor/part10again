@@ -19,14 +19,12 @@ const RepositoryList = () => {
   const { data, error, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-and-network"
   })
-  console.log("data<><>", data)
 
 
   // Get the nodes from the edges array
   const repositoryNodes = data?.repositories
     ? data?.repositories?.edges.map(edge => edge.node)
     : [];
-
 
 
   if (loading) {
