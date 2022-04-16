@@ -6,6 +6,7 @@ import RepositoryImage from './RepositoryImage';
 import PicAndText from "./PicAndText"
 import FlexCon from "./FlexCon"
 import FCIC from "./FlexConItemContainer"
+import theme from '../STYLES/theme';
 
 const RepositoryItem = ({ item }) => {
 
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start', // this is how to prevent a button (View) from occupying the whole width.
   },
   languageText: {
-    color: "white",
+    color: theme.colors.text,
     fontSize: 16,
     fontWeight: '700',
     

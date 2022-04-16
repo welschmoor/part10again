@@ -1,9 +1,12 @@
+import { Platform } from 'react-native';
+
 const theme = {
   colors: {
     textPrimary: '#24292e',
     textSecondary: '#586069',
     primary: '#0366d6',
     white: '#f4f4f4',
+    text: Platform.OS === 'android' ? 'white' : 'black',
   },
   fontSizes: {
     body: 14,
@@ -17,7 +20,6 @@ const theme = {
     bold: '700',
   },
 };
-
 
 
 export default theme;
