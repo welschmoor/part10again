@@ -3,6 +3,8 @@ import Text from './Text';
 import FormikForm from './FormikForm'
 import * as yup from 'yup';
 import { StyleSheet, View } from 'react-native';
+import { useMutation } from '@apollo/client';
+import { AUTHENTICATE } from '../graphql/mutations';
 
 const initialValues = {
   name: '',
@@ -21,8 +23,16 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const onSubmit = (values) => {
+  const [authenticate, { loading }] = useMutation(AUTHENTICATE)
+
+  const onSubmit = async (values) => {
     console.log(values);
+    await authenticate({
+      variables: {
+        username: values.name,
+        password: values.password,
+      }
+    })
   };
 
   return (

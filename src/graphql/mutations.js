@@ -9,3 +9,15 @@ export const SIGN_UP = gql`
    }
  }
 `
+
+export const AUTHENTICATE = gql`
+  mutation AUTHENTICATE($username: String!, $password: String!) {
+    authenticate(credentials: { username: $username, password: $password }) {
+      user {
+        username
+      }
+      accessToken
+      expiresAt
+   }
+ }
+`
