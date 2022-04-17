@@ -6,6 +6,8 @@ import { StyleSheet, View } from 'react-native';
 import { useMutation } from '@apollo/client';
 import { AUTHENTICATE } from '../graphql/mutations';
 
+import AuthStorage from "../utils/authStorage"
+
 const initialValues = {
   name: '',
   password: ''
@@ -26,13 +28,20 @@ const SignIn = () => {
   const [authenticate, { loading }] = useMutation(AUTHENTICATE)
 
   const onSubmit = async (values) => {
-    console.log(values);
-    await authenticate({
+    const authStorage = new AuthStorage()
+
+    const response = await authenticate({
       variables: {
         username: values.name,
         password: values.password,
       }
     })
+
+    //saving token in storage
+    const token = response.data.authenticate.accessToken
+    await authStorage.setAccessToken(token)
+    console.log("saved token ", await authStorage.getAccessToken())
+
   };
 
   return (
@@ -55,8 +64,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   }
 })
-
-
 
 export default SignIn;
 
