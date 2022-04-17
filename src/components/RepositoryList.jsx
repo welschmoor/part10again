@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FlatList, View, StyleSheet, Text } from 'react-native';
 import { GET_REPOSITORIES } from '../graphql/queries';
 import useRepositories from '../hooks/useRepositories';
+import Amisignedin from './Amisignedin';
 import RepositoryItem from "./RepositoryItem"
 
 
@@ -15,7 +16,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   // const { repositories, loading, refetch } = useRepositories() // REST API
-  
+
   const { data, error, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-and-network"
   })
@@ -32,15 +33,18 @@ const RepositoryList = () => {
   }
 
   return (
-    <FlatList
-      keyExtractor={(item) => item.id}
-      data={repositoryNodes}
-      ItemSeparatorComponent={ItemSeparator}
-      // other props
-      renderItem={({ item }) => {
-        return <RepositoryItem item={item} />
-      }}
-    />
+    <>
+      <Amisignedin />
+      <FlatList
+        keyExtractor={(item) => item.id}
+        data={repositoryNodes}
+        ItemSeparatorComponent={ItemSeparator}
+        // other props
+        renderItem={({ item }) => {
+          return <RepositoryItem item={item} />
+        }}
+      />
+    </>
   );
 };
 

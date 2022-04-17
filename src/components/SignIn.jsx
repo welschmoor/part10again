@@ -3,10 +3,11 @@ import Text from './Text';
 import FormikForm from './FormikForm'
 import * as yup from 'yup';
 import { StyleSheet, View } from 'react-native';
-import { useMutation } from '@apollo/client';
+import { useApolloClient, useMutation } from '@apollo/client';
 import { AUTHENTICATE } from '../graphql/mutations';
 
 import AuthStorage from "../utils/authStorage"
+import { useNavigate } from 'react-router-native';
 
 const initialValues = {
   name: '',
@@ -24,9 +25,12 @@ const validationSchema = yup.object().shape({
     .required('password is required'),
 });
 
+
+
 const SignIn = () => {
   const [authenticate, { loading }] = useMutation(AUTHENTICATE)
-
+  const navigate = useNavigate()
+  const apolloClient = useApolloClient()
   const onSubmit = async (values) => {
     const authStorage = new AuthStorage()
 
@@ -41,7 +45,8 @@ const SignIn = () => {
     const token = response.data.authenticate.accessToken
     await authStorage.setAccessToken(token)
     console.log("saved token ", await authStorage.getAccessToken())
-
+    apolloClient.resetStore()
+    navigate('/')
   };
 
   return (

@@ -23,3 +23,11 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const AM_I_SIGNEDIN = gql`
+ query Me {
+    me {
+      id
+      username
+    }
+  }
+`

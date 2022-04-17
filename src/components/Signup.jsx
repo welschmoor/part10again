@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { StyleSheet, View } from 'react-native';
 import { useMutation } from '@apollo/client';
 import { SIGN_UP } from '../graphql/mutations';
+import { useNavigate } from 'react-router-native';
 
 const initialValues = {
   name: '',
@@ -24,6 +25,7 @@ const validationSchema = yup.object().shape({
 
 const Signup = () => {
   const [signup, { loading }] = useMutation(SIGN_UP)
+  const navigate = useNavigate()
 
   const onSubmit = async (values) => {
     console.log("values<>", values)
@@ -33,6 +35,8 @@ const Signup = () => {
         password: values.password,
       }
     })
+
+    navigate('/signupRedirect')
   };
 
   return (
