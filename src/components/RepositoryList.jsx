@@ -15,12 +15,14 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  // const { repositories, loading, refetch } = useRepositories() // REST API
-
   const { data, error, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-and-network"
   })
+  return <RepositoryListContainer data={data} loading={loading} />
+}
 
+export const RepositoryListContainer = ({ data, loading }) => {
+  // const { repositories, loading, refetch } = useRepositories() // REST API
 
   // Get the nodes from the edges array
   const repositoryNodes = data?.repositories

@@ -1,29 +1,58 @@
+import React from 'react';
+import { render } from '@testing-library/react-native';
 
-// npm run test --src/__tests__/components/RepositoryListTest.jsx
-// import React from 'react';
-// import { render } from '@testing-library/react-native';
+import RepositoryListContainer from '../../components/RepositoryList';
 
-// import RepositoryListContainer from '../../components/RepositoryList/RepositoryListContainer';
+const repositories = {
+  pageInfo: {
+    totalCount: 8,
+    hasNextPage: true,
+    endCursor:
+      'WyJhc3luYy1saWJyYXJ5LnJlYWN0LWFzeW5jIiwxNTg4NjU2NzUwMDc2XQ==',
+    startCursor: 'WyJqYXJlZHBhbG1lci5mb3JtaWsiLDE1ODg2NjAzNTAwNzZd',
+  },
+  edges: [
+    {
+      node: {
+        id: 'jaredpalmer.formik',
+        fullName: 'jaredpalmer/formik',
+        description: 'Build forms in React, without the tears',
+        language: 'TypeScript',
+        forksCount: 1619,
+        stargazersCount: 21856,
+        ratingAverage: 88,
+        reviewCount: 3,
+        ownerAvatarUrl:
+          'https://avatars2.githubusercontent.com/u/4060187?v=4',
+      },
+      cursor: 'WyJqYXJlZHBhbG1lci5mb3JtaWsiLDE1ODg2NjAzNTAwNzZd',
+    },
+    {
+      node: {
+        id: 'async-library.react-async',
+        fullName: 'async-library/react-async',
+        description: 'Flexible promise-based React data loader',
+        language: 'JavaScript',
+        forksCount: 69,
+        stargazersCount: 1760,
+        ratingAverage: 72,
+        reviewCount: 3,
+        ownerAvatarUrl:
+          'https://avatars1.githubusercontent.com/u/54310907?v=4',
+      },
+      cursor:
+        'WyJhc3luYy1saWJyYXJ5LnJlYWN0LWFzeW5jIiwxNTg4NjU2NzUwMDc2XQ==',
+    },
+  ],
+};
 
+describe('RepositoryList', () => {
 
-// import _ from 'lodash'
-// have to create this 
-// function getAllByTestId(id) {
-//   const instances = getAllByProps({ testID: id });
-//   console.log("_.uniqBy(instances, instance => instance.props.children)", _.uniqBy(instances, instance => instance.props.children))
-//   return _.uniqBy(instances, instance => instance.props.children);
-// }
-
-describe("blah", function () {
-  it("testing test", function () {
+  it('renders repository information correctly', () => {
     expect(1).toBe(1)
   })
 
-  // it.only("element exists?", function () {
-  //   // const repositoryItems = getAllByTestId('repositoryItem');
-  //   // const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
-  //   // console.log("repositoryItems<><>", repositoryItems)
 
-  //   expect(1).toBe(1)
-  // })
-})
+
+
+});

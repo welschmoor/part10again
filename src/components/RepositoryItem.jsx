@@ -13,7 +13,7 @@ import FlexCon from "./FlexCon"
 const RepositoryItem = ({ item }) => {
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="repositoryItem">
       {/* <Text>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</Text> */}
       <PicAndText>
         <RepositoryImage imgURL={item.ownerAvatarUrl} />
