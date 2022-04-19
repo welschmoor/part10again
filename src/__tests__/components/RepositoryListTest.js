@@ -5,6 +5,7 @@ import { render } from '@testing-library/react-native';
 import RepositoryListContainer from '../../components/RepositoryListContainer';
 
 
+
 const repositories = {
   pageInfo: {
     totalCount: 8,
@@ -53,21 +54,19 @@ const data = {
 }
 
 describe('RepositoryList', () => {
-  const { getAllByTestId } = render(
+  const { getAllByTestId, debug } = render(
     <RepositoryListContainer data={data} loading={false} />
   )
-
+  debug() //
   const repositoryItems = getAllByTestId('repositoryItem');
   const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
-  console.log("firstRepositoryItem<><>", firstRepositoryItem)
-  console.log("secondRepositoryItem<><>", secondRepositoryItem)
-
   it('renders repository information correctly', () => {
-    expect(1).toBe(1)
+    expect(firstRepositoryItem).toHaveTextContent("jaredpalmer/formik")
+    expect(firstRepositoryItem).toHaveTextContent("TypeScript")
+
+    expect(secondRepositoryItem).toHaveTextContent("async-library/react-async")
+    expect(secondRepositoryItem).toHaveTextContent("JavaScript")
   })
-
-
-
 });
 

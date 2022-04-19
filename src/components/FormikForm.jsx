@@ -32,8 +32,8 @@ const FormikForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cwrapper}>
-        <FormikTextInput name="name" placeholder="name" />
-        <FormikTextInput name="password" placeholder="password" secureTextEntry />
+        <FormikTextInput name="name" placeholder="name" testID="nameinput" />
+        <FormikTextInput name="password" placeholder="password" secureTextEntry testID="passwordinput" />
         <Pressable onPress={onSubmit} style={styles.submitBTN}>
           <Text style={styles.submitBTNtext}>Submit</Text>
         </Pressable>

@@ -32,7 +32,7 @@ const RepositoryItem = ({ item }) => {
 
       </FlexCon>
       <FlexCon>
-        <FCIC><Text style={styles.boldText}>{reduceNum(item.stargazersCount)}</Text></FCIC>
+        <FCIC><Text style={styles.boldText} id="stars">{reduceNum(item.stargazersCount)}</Text></FCIC>
         <FCIC><Text style={styles.boldText}> {reduceNum(item.forksCount)}</Text></FCIC>
         <FCIC><Text style={styles.boldText}> {item.reviewCount}</Text></FCIC>
         <FCIC><Text style={styles.boldText}>{item.ratingAverage}</Text></FCIC>
