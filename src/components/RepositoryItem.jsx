@@ -2,6 +2,7 @@ import { reduceNum } from '../utils/helperfunctions';
 import { View, StyleSheet } from 'react-native';
 import RepositoryImage from './RepositoryImage';
 import Text from "./Text"
+import { Link } from 'react-router-native';
 
 //styles
 import FCIC from "./FlexConItemContainer"
@@ -18,7 +19,7 @@ const RepositoryItem = ({ item }) => {
       <PicAndText>
         <RepositoryImage imgURL={item.ownerAvatarUrl} />
         <View style={styles.needsShrinking}>
-          <Text style={styles.headerText}>{item.fullName}</Text>
+          <Link to={`/repository/${item.id}`}><Text style={styles.headerText}>{item.fullName}</Text></Link>
           <Text style={styles.descriptionText}>{item.description}</Text>
           <View style={styles.languageButton}><Text style={styles.languageText}>{item.language}</Text></View>
         </View>

@@ -8,6 +8,7 @@ import RepositoryList from "./RepositoryList"
 import AppBar from "./AppBar"
 import SignupRedirect from './SignupRedirect';
 import About from './About';
+import RepositorySingle from './RepositorySingle'
 
 
 const styles = StyleSheet.create({
@@ -26,6 +27,7 @@ const Main = () => {
 
       <Routes>
         <Route path="/about" element={<About />} exact />
+        <Route path="/repository/:id" element={<RepositorySingle />} exact />
         <Route path="/signin" element={<SignIn />} exact />
         <Route path="/signup" element={<Signup />} exact />
         <Route path="/signupRedirect" element={<SignupRedirect />} exact />

@@ -31,3 +31,22 @@ export const AM_I_SIGNEDIN = gql`
     }
   }
 `
+
+export const FETCH_ONE = gql`
+  query Me($repositoryId: ID!) {
+    repository(id: $repositoryId) {
+      id
+      createdAt
+      description
+      forksCount
+      fullName
+      language
+      name
+      ownerAvatarUrl
+      ownerName
+      ratingAverage
+      reviewCount
+      stargazersCount
+    }
+  }
+`
