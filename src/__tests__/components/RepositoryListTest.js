@@ -1,7 +1,9 @@
+// npm test -- __tests__/components/RepositoryListTest.js
+
 import React from 'react';
 import { render } from '@testing-library/react-native';
+import RepositoryListContainer from '../../components/RepositoryListContainer';
 
-import RepositoryListContainer from '../../components/RepositoryList';
 
 const repositories = {
   pageInfo: {
@@ -46,7 +48,20 @@ const repositories = {
   ],
 };
 
+const data = {
+  repositories: repositories
+}
+
 describe('RepositoryList', () => {
+  const { getAllByTestId } = render(
+    <RepositoryListContainer data={data} loading={false} />
+  )
+
+  const repositoryItems = getAllByTestId('repositoryItem');
+  const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+
+  console.log("firstRepositoryItem<><>", firstRepositoryItem)
+  console.log("secondRepositoryItem<><>", secondRepositoryItem)
 
   it('renders repository information correctly', () => {
     expect(1).toBe(1)
@@ -54,5 +69,5 @@ describe('RepositoryList', () => {
 
 
 
-
 });
+
