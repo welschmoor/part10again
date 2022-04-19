@@ -1,5 +1,5 @@
 import { reduceNum } from '../utils/helperfunctions';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Linking } from 'react-native';
 import RepositoryImage from './RepositoryImage';
 import Text from "./Text"
 import { Link } from 'react-router-native';
@@ -38,6 +38,10 @@ const RepositoryItem = ({ item }) => {
         <FCIC><Text style={styles.boldText}> {item.reviewCount}</Text></FCIC>
         <FCIC><Text style={styles.boldText}>{item.ratingAverage}</Text></FCIC>
       </FlexCon>
+
+      <View>
+        {item.url && <Text onPress={() => Linking.openURL(`${item.url}`)} style={styles.linkText}>Link to GitHub</Text>}
+      </View>
 
     </View>
   )
@@ -78,6 +82,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
 
+  },
+  linkText: {
+    color: '#333388',
+    fontSize: 16,
+    fontWeight: '400',
+    marginTop: 10,
   }
 
 });

@@ -12,7 +12,7 @@ const RepositorySingle = () => {
   const { data, loading } = useQuery(FETCH_ONE, {
     variables: { repositoryId: id }
   })
-  console.log("data", data)
+  console.log("data", data?.repository)
 
   return (
     <View>
