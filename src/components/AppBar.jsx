@@ -45,7 +45,7 @@ const AppBar = () => {
       <ScrollView horizontal>
         <Link to="/" ><Text style={styles.text}>Home</Text></Link>
         <Link to="/about" ><Text style={styles.text}>About</Text></Link>
-        {!data?.me?.username ? <> <Link to="/signin" ><Text style={styles.text}>Sign In</Text></Link>
+        {!data?.me?.username ? <><Link to="/signin" ><Text style={styles.text}>Sign In</Text></Link>
           <Link to="/signup" ><Text style={styles.text}>Sign Up</Text></Link></> : null}
         {data?.me?.username ? <Pressable onPress={signOutHandler}><Text style={styles.text}>Sign Out</Text></Pressable> : null}
       </ScrollView>

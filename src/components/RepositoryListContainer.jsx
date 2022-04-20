@@ -22,7 +22,7 @@ const RepositoryListContainer = ({ data, loading }) => {
 
   return (
     <>
-      {/* <Amisignedin /> */} {/* Commented out because it's a side effect in tests*/}
+      {/* <Amisignedin /> */}
       <FlatList
         keyExtractor={(item) => item.id}
         data={repositoryNodes}

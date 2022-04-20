@@ -1,6 +1,6 @@
 
 import { useQuery } from "@apollo/client"
-import { StyleSheet, View, Text } from "react-native-web"
+import { StyleSheet, View, Text } from "react-native"
 import { useParams } from "react-router-native"
 import { FETCH_ONE } from "../graphql/queries"
 import RepositoryItem from './RepositoryItem'
