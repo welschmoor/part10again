@@ -1,5 +1,5 @@
 import { reduceNum } from '../utils/helperfunctions';
-import { View, StyleSheet, Linking } from 'react-native';
+import { View, StyleSheet, Linking, FlatList } from 'react-native';
 import RepositoryImage from './RepositoryImage';
 import Text from "./Text"
 import { Link } from 'react-router-native';
@@ -10,8 +10,13 @@ import PicAndText from "./PicAndText"
 import theme from '../STYLES/theme';
 import FlexCon from "./FlexCon"
 
+import Review from "./Review"
+
+const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryItem = ({ item }) => {
+  const reviews = item.url && item.reviews.edges.map(each => each.node)
+  console.log("reviews", reviews)
 
   return (
     <View style={styles.container} testID="repositoryItem">
@@ -39,9 +44,19 @@ const RepositoryItem = ({ item }) => {
         <FCIC><Text style={styles.boldText}>{item.ratingAverage}</Text></FCIC>
       </FlexCon>
 
-      <View>
-        {item.url && <Text onPress={() => Linking.openURL(`${item.url}`)} style={styles.linkText}>Link to GitHub</Text>}
-      </View>
+      {item.url ? <View style={styles.gitHubBtn}>
+        <Text onPress={() => Linking.openURL(`${item.url}`)} style={styles.linkText}>Link to GitHub</Text>
+      </View> : null}
+
+      {item.url ?
+        <FlatList
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={ItemSeparator}
+          data={reviews}
+          renderItem={({ item }) => {
+            return <Review item={item} />
+          }}
+        /> : null}
 
     </View>
   )
@@ -50,6 +65,21 @@ const RepositoryItem = ({ item }) => {
 export default RepositoryItem
 
 const styles = StyleSheet.create({
+  gitHubBtn: {
+    backgroundColor: "#7757CC",
+    color: "white",
+    marginTop: 10,
+    padding: 5,
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: 32,
+    borderRadius: 7,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 5,
+    paddingTop: 5,
+  },
   needsShrinking: {
     flexShrink: 1,
   },
@@ -84,11 +114,12 @@ const styles = StyleSheet.create({
 
   },
   linkText: {
-    color: '#333388',
+    color: 'white',
     fontSize: 16,
-    fontWeight: '400',
-    marginTop: 10,
-  }
+    fontWeight: '600',
+
+  },
+  separator: { height: 10 },
 
 });
 

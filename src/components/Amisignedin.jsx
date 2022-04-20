@@ -11,8 +11,8 @@ const Amisignedin = () => {
 
   return (
     <View>
-      {data?.me?.username && <Text>logged in as: {data?.me?.username} </Text>}
-      {!data?.me?.username && <Text>not logged in</Text>}
+      {data?.me?.username ? <Text>logged in as: {data?.me?.username} </Text> : null}
+      {!data?.me?.username ? <Text>not logged in</Text> : null}
     </View>
   )
 }

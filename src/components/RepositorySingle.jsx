@@ -12,11 +12,13 @@ const RepositorySingle = () => {
   const { data, loading } = useQuery(FETCH_ONE, {
     variables: { repositoryId: id }
   })
-  console.log("data", data?.repository)
+  console.log("data?.repository", data?.repository)
+  const reviews = data?.repository.reviews.edges.map(each => each.node)
+
 
   return (
     <View>
-      {!loading && <RepositoryItem item={data?.repository} />}
+      {!loading ? <RepositoryItem item={data?.repository} /> : null}
     </View>
   )
 }
