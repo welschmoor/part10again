@@ -15,12 +15,18 @@ const initialValues = {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(3, 'Name must be at least 3 chars long')
+    .min(1, 'Name must be at least 3 chars long')
+    .max(30, 'Name must be shorter than 30 chars')
     .required('name is required'),
   password: yup
     .string()
     .min(3, 'Password must be longer than 3 characters')
+    .max(50, 'Password must be shorter than 50 characters')
     .required('password is required'),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref('password'), null], "Passwords do not match!")
+    .required('Password confirm is required')
 });
 
 const Signup = () => {
@@ -43,7 +49,7 @@ const Signup = () => {
     <View style={styles.container}>
       <Text style={styles.text}>Create a new account</Text>
       <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-        {({ handleSubmit }) => <FormikForm onSubmit={handleSubmit} />}
+        {({ handleSubmit }) => <FormikForm onSubmit={handleSubmit} passwordConfirmQ={true} />}
       </Formik>
     </View>
   )
@@ -52,6 +58,7 @@ const Signup = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    flex: 1,
   },
   text: {
     fontSize: 20,

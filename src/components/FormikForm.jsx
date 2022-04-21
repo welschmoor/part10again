@@ -1,6 +1,6 @@
 import { View, Pressable, Text, StyleSheet } from "react-native"
-import FlexCon from "./FlexCon"
 import FormikTextInput from "./FormikTextInput"
+
 
 const styles = StyleSheet.create({
   container: {
@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
 })
 
 
-const FormikForm = ({ onSubmit }) => {
+const FormikForm = ({ onSubmit, passwordConfirmQ }) => { // passwordComfirm: boolean gives a third field for pw comfirmatino
   return (
     <View style={styles.container}>
       <View style={styles.cwrapper}>
         <FormikTextInput name="name" placeholder="name" testID="nameinput" />
         <FormikTextInput name="password" placeholder="password" secureTextEntry testID="passwordinput" />
+        {passwordConfirmQ && <FormikTextInput name="passwordConfirm" placeholder="confirm password" secureTextEntry testID="passwordConfirminput" />}
         <Pressable onPress={onSubmit} style={styles.submitBTN}>
           <Text style={styles.submitBTNtext}>Submit</Text>
         </Pressable>
