@@ -16,6 +16,8 @@ const RepositoryListContainer = ({ data, loading }) => {
     ? data?.repositories?.edges.map(edge => edge.node)
     : [];
 
+  console.log('repositoryNodes<><>', repositoryNodes)
+
   if (loading) {
     return (<View><Text>Loading...</Text></View>)
   }

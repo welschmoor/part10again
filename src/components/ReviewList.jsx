@@ -37,7 +37,6 @@ const ReviewList = ({ data }) => {
         return <ReviewItem item={item} />
       }}
     />
-
   )
 }
 

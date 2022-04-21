@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 });
 
 
+
 const AppBar = () => {
   const { data } = useQuery(AM_I_SIGNEDIN)
   const authStorage = useContext(AuthStorageContext);
@@ -47,6 +48,7 @@ const AppBar = () => {
         <Link to="/about" ><Text style={styles.text}>About</Text></Link>
         {!data?.me?.username ? <><Link to="/signin" ><Text style={styles.text}>Sign In</Text></Link>
           <Link to="/signup" ><Text style={styles.text}>Sign Up</Text></Link></> : null}
+        {data?.me?.username ? <Link to="/review" ><Text style={styles.text}>Review</Text></Link> : null}
         {data?.me?.username ? <Pressable onPress={signOutHandler}><Text style={styles.text}>Sign Out</Text></Pressable> : null}
       </ScrollView>
     </View >)

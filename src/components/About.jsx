@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     height: 100,
+    flex: 1,
   },
   text: {
     marginLeft: 20,

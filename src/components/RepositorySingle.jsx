@@ -13,15 +13,24 @@ const RepositorySingle = () => {
   const { id } = useParams()
 
   const { data, loading } = useQuery(FETCH_ONE, {
-    variables: { repositoryId: id }
+    variables: { repositoryId: id },
+    fetchPolicy: 'cache-and-network',
   })
 
   // s.container has a propety flex: 1. ReviewList returns <FlatList>
   // this solves the problem when a list could not be scrolled all the way 
   // down
+
+  if (loading) {
+    return(
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    )
+  }
   return (
     <View style={s.container}>
-      {!loading ? <ReviewList data={data?.repository} /> : null}
+      <ReviewList data={data?.repository} />
     </View>
   )
 }

@@ -37,6 +37,7 @@ const FormikTextInput = ({ name, ...props }) => {
   return (
     <View style={showError ? styles.containerError : styles.container} >
       <TextInput
+        autoCapitalize="none"
         style={styles.input}
         onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
