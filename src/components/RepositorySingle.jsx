@@ -4,6 +4,9 @@ import { StyleSheet, View, Text } from "react-native"
 import { useParams } from "react-router-native"
 import { FETCH_ONE } from "../graphql/queries"
 import RepositoryItem from './RepositoryItem'
+import ReviewList from "./ReviewList"
+
+
 
 
 const RepositorySingle = () => {
@@ -12,15 +15,22 @@ const RepositorySingle = () => {
   const { data, loading } = useQuery(FETCH_ONE, {
     variables: { repositoryId: id }
   })
-  console.log("data?.repository", data?.repository)
-  const reviews = data?.repository.reviews.edges.map(each => each.node)
 
-
+  // s.container has a propety flex: 1. ReviewList returns <FlatList>
+  // this solves the problem when a list could not be scrolled all the way 
+  // down
   return (
-    <View>
-      {!loading ? <RepositoryItem item={data?.repository} /> : null}
+    <View style={s.container}>
+      {!loading ? <ReviewList data={data?.repository} /> : null}
     </View>
   )
+}
+
+const s = {
+  container: {
+    // paddingBottom: 90,
+    flex: 1
+  }
 }
 
 

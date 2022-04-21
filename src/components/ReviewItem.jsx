@@ -1,7 +1,7 @@
 
 
 import { View, Text, StyleSheet } from "react-native"
-
+import { format } from 'date-fns'
 
 
 const s = StyleSheet.create({
@@ -35,7 +35,14 @@ const s = StyleSheet.create({
   ratingAndText: {
     display: "flex",
     flexDirection: "row",
-
+    backgroundColor: "white",
+    marginTop: 10,
+    padding: 20,
+  },
+  dateText: {
+    color: '#777', fontSize: 14, fontWeight: '600',
+    marginBottom: 6,
+    marginTop: 0,
   }
 })
 
@@ -48,10 +55,9 @@ const RatingAndText = ({ children }) => {
 }
 
 
-const Review = ({ item }) => {
+const ReviewItem = ({ item }) => {
 
   console.log("itemReview", item)
-
   return (
     <RatingAndText>
       <View style={s.rating}>
@@ -59,7 +65,8 @@ const Review = ({ item }) => {
       </View>
       <View style={s.needsShrinking}>
         <Text style={s.headerText}>{item.user.username}</Text>
-        <Text style={s.descriptionText}>{item.description}</Text>
+        <Text style={s.dateText}>{String(format(new Date(item.createdAt), 'dd MMM. yyyy'))}</Text>
+        <Text style={s.descriptionText}>{item.text}</Text>
       </View>
     </RatingAndText>
 
@@ -67,4 +74,4 @@ const Review = ({ item }) => {
   )
 }
 
-export default Review
+export default ReviewItem

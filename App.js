@@ -15,7 +15,7 @@ import AuthStorageContext from './src/contexts/AuthStorageContext';
 
 
 const App = () => {
-  console.log(Constants.manifest, "Constants.manifest");
+
 
   return (
     <>

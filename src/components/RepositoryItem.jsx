@@ -10,14 +10,11 @@ import PicAndText from "./PicAndText"
 import theme from '../STYLES/theme';
 import FlexCon from "./FlexCon"
 
-import Review from "./Review"
+import ReviewList from "./ReviewList"
+import ReviewItem from "./ReviewItem"
 
-const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryItem = ({ item }) => {
-  const reviews = item.url && item.reviews.edges.map(each => each.node)
-  console.log("reviews", reviews)
-
   return (
     <View style={styles.container} testID="repositoryItem">
       {/* <Text>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</Text> */}
@@ -47,16 +44,6 @@ const RepositoryItem = ({ item }) => {
       {item.url ? <View style={styles.gitHubBtn}>
         <Text onPress={() => Linking.openURL(`${item.url}`)} style={styles.linkText}>Link to GitHub</Text>
       </View> : null}
-
-      {item.url ?
-        <FlatList
-          keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={ItemSeparator}
-          data={reviews}
-          renderItem={({ item }) => {
-            return <Review item={item} />
-          }}
-        /> : null}
 
     </View>
   )
@@ -120,7 +107,7 @@ const styles = StyleSheet.create({
 
   },
   separator: { height: 10 },
-
+  separator20: { marginTop: 20 }
 });
 
 

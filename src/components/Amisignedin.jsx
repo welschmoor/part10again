@@ -6,8 +6,6 @@ import { AM_I_SIGNEDIN } from "../graphql/queries"
 const Amisignedin = () => {
 
   const { data } = useQuery(AM_I_SIGNEDIN)
-  console.log("loggg", data?.me?.username)
-
 
   return (
     <View>

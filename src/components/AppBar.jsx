@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingLeft: 20,
     backgroundColor: "rgba(100, 100, 180, 1)",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: Constants.statusBarHeight
 
   },
   button: {
@@ -34,7 +35,6 @@ const AppBar = () => {
   const apolloClient = useApolloClient()
   console.log("loggg", data?.me?.username)
 
-
   const signOutHandler = async () => {
     await authStorage.removeAccessToken()
     apolloClient.resetStore()
@@ -49,7 +49,6 @@ const AppBar = () => {
           <Link to="/signup" ><Text style={styles.text}>Sign Up</Text></Link></> : null}
         {data?.me?.username ? <Pressable onPress={signOutHandler}><Text style={styles.text}>Sign Out</Text></Pressable> : null}
       </ScrollView>
-
     </View >)
 };
 
