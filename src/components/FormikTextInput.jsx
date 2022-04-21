@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   input: {
     padding: 7,
     marginLeft: 8,
-    maxWidth: 100,
+    
     fontSize: 18,
   }
 });

@@ -1,5 +1,5 @@
 import { reduceNum } from '../utils/helperfunctions';
-import { View, StyleSheet, Linking, FlatList } from 'react-native';
+import { View, StyleSheet, Linking } from 'react-native';
 import RepositoryImage from './RepositoryImage';
 import Text from "./Text"
 import { Link } from 'react-router-native';
@@ -9,9 +9,6 @@ import FCIC from "./FlexConItemContainer"
 import PicAndText from "./PicAndText"
 import theme from '../STYLES/theme';
 import FlexCon from "./FlexCon"
-
-import ReviewList from "./ReviewList"
-import ReviewItem from "./ReviewItem"
 
 
 const RepositoryItem = ({ item }) => {

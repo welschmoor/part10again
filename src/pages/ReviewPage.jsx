@@ -1,5 +1,5 @@
 
-import { Text, View, StyleSheet } from "react-native"
+import { Text, StyleSheet, ScrollView } from "react-native"
 import ReviewForm from "../components/ReviewForm/ReviewForm";
 import { Formik } from "formik"
 import * as yup from 'yup';
@@ -47,6 +47,7 @@ const ReviewPage = () => {
       rating: Number(values.rating),
       text: values.reviewText,
     }
+
     const response = await submitReview({
       variables: {
         review: review
@@ -60,12 +61,12 @@ const ReviewPage = () => {
   };
 
   return (
-    <View style={s.container}>
+    <ScrollView style={s.container}>
       <Text style={s.text}>Leave a review!</Text>
       <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
         {({ handleSubmit }) => <ReviewForm onSubmit={handleSubmit} />}
       </Formik>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -73,7 +74,7 @@ const ReviewPage = () => {
 const s = StyleSheet.create({
   container: {
     padding: 20,
-    flex: 1,
+    // flex: 1,
     backgroundColor: "white"
   },
   text: {

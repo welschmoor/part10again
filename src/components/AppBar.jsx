@@ -1,7 +1,7 @@
 import { View, StyleSheet, Pressable, ScrollView } from 'react-native';
 import Text from './Text';
 import Constants from 'expo-constants';
-import { Route, Routes, Navigate, Link, } from 'react-router-native';
+import { Link } from 'react-router-native';
 import { AM_I_SIGNEDIN } from '../graphql/queries';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useContext } from "react"

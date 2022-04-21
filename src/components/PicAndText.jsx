@@ -1,5 +1,5 @@
-import RepositoryImage from "./RepositoryImage"
-import { StyleSheet, View, Text } from "react-native"
+
+import { StyleSheet, View } from "react-native"
 
 
 const styles = StyleSheet.create({

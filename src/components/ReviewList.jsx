@@ -1,4 +1,4 @@
-import { FlatList, View, Text, StyleSheet, ScrollView } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import ReviewItem from "./ReviewItem";
 import ItemSeparator from "./ItemSeparator";
 import RepositoryItem from './RepositoryItem'

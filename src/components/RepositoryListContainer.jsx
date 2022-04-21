@@ -1,5 +1,4 @@
 import { View, FlatList, Text, StyleSheet } from "react-native"
-import Amisignedin from './Amisignedin';
 import RepositoryItem from "./RepositoryItem"
 
 
