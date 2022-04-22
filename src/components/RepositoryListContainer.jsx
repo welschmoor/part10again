@@ -32,7 +32,8 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
     if (itemValue === "dataasc") {
       orderObj.setOrderBy('CREATED_AT')
       orderObj.setOrderDirection('ASC')
-    } else if (itemValue === "dataasc") {
+    }
+    else if (itemValue === "datadesc") {
       orderObj.setOrderBy('CREATED_AT')
       orderObj.setOrderDirection('DESC')
 
@@ -53,8 +54,8 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
         onValueChange={(itemValue, itemIndex) =>
           pickerFn(itemValue)
         }>
-        <Picker.Item label="Sort by date - ascending" value="dataasc" />
-        <Picker.Item label="Sort by date - descending" value="datadesc" />
+        <Picker.Item label="Sort by date - newest first" value="dataasc" />
+        <Picker.Item label="Sort by date - oldest first" value="datadesc" />
         <Picker.Item label="Sort by rating - Low to High" value="ratingasc" />
         <Picker.Item label="Sort by rating - High to Low" value="ratingdesc" />
       </Picker>
@@ -73,10 +74,10 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
               onValueChange={(itemValue, itemIndex) =>
                 pickerFn(itemValue)
               }>
-              <Picker.Item label="Sort by date - ascending" value="dataasc" />
-              <Picker.Item label="Sort by date - descending" value="datadesc" />
-              <Picker.Item label="Sort by rating - ascending" value="ratingasc" />
-              <Picker.Item label="Sort by rating - descending" value="ratingdesc" />
+              <Picker.Item label="Sort by date - oldest first" value="dataasc" />
+              <Picker.Item label="Sort by date - newest first" value="datadesc" />
+              <Picker.Item label="Sort by rating - Low to High" value="ratingasc" />
+              <Picker.Item label="Sort by rating - High to Low" value="ratingdesc" />
             </Picker>
           </>
         }

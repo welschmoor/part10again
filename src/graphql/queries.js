@@ -41,7 +41,7 @@ export const AM_I_SIGNEDIN = gql`
 `
 
 export const FETCH_ONE = gql`
-  query Me($repositoryId: ID!) {
+  query Me($repositoryId: ID!, $after: String, $first: Int) {
     repository(id: $repositoryId) {
       id
       createdAt
@@ -57,18 +57,25 @@ export const FETCH_ONE = gql`
       stargazersCount
       url
 
-      reviews {
+      reviews(after: $after, first: $first) {
         edges {
           node {
             id
             text
             rating
             createdAt
+            repositoryId
             user {
               id
               username
             }
           }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
         }
       }
 
