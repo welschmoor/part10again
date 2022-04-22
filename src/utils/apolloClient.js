@@ -5,7 +5,11 @@ import { relayStylePagination } from '@apollo/client/utilities';
 
 const cache = new InMemoryCache({
   typePolicies: {
-    Query: { fields: { repositories: relayStylePagination(), }, },
+    Query: {
+      fields: {
+        repositories: relayStylePagination(),
+      },
+    },
   },
 });
 

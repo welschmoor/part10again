@@ -20,9 +20,10 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
     ? data?.repositories?.edges.map(edge => edge.node)
     : [];
 
-  if (loading) {
-    return (<View><Text>Loading...</Text></View>)
-  }
+  // thyis gave me a bug with fetchMore
+  // if (loading) {
+  //   return (<View><Text>Loading...</Text></View>)
+  // }
 
   const onChangeSearch = query => { return searchObj.setSearchKeywordST(query) }
 
@@ -34,6 +35,7 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
     } else if (itemValue === "dataasc") {
       orderObj.setOrderBy('CREATED_AT')
       orderObj.setOrderDirection('DESC')
+
     } else if (itemValue === "ratingasc") {
       orderObj.setOrderBy('RATING_AVERAGE')
       orderObj.setOrderDirection('ASC')
@@ -53,8 +55,8 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
         }>
         <Picker.Item label="Sort by date - ascending" value="dataasc" />
         <Picker.Item label="Sort by date - descending" value="datadesc" />
-        <Picker.Item label="Sort by rating - ascending" value="ratingasc" />
-        <Picker.Item label="Sort by rating - descending" value="ratingdesc" />
+        <Picker.Item label="Sort by rating - Low to High" value="ratingasc" />
+        <Picker.Item label="Sort by rating - High to Low" value="ratingdesc" />
       </Picker>
     )
   }
