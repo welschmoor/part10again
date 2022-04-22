@@ -24,7 +24,6 @@ const RepositoryInfo = ({ repository }) => {
 
 const ReviewList = ({ data }) => {
   const reviews = data?.reviews.edges.map(each => each.node) || []
-  console.log("data reviews", reviews)
 
   return (
 

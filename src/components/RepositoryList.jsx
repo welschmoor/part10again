@@ -9,8 +9,15 @@ const RepositoryList = () => {
   const [orderDirection, setOrderDirection] = useState('DESC') // 'DESC' 'ASC'
   const { data, error, loading } = useGetData(orderBy, orderDirection)
 
-  return <RepositoryListContainer data={data} loading={loading} />
-  
+  const orderObj = {
+    orderBy,
+    setOrderBy,
+    orderDirection,
+    setOrderDirection,
+  }
+
+  return <RepositoryListContainer data={data} loading={loading} orderObj={orderObj} />
+
 }
 
 export default RepositoryList;

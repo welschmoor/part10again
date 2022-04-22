@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     marginRight: 30,
     fontSize: 18,
+    height: 26,
   }
 });
 
@@ -34,7 +35,7 @@ const AppBar = () => {
   const { data } = useQuery(AM_I_SIGNEDIN)
   const authStorage = useContext(AuthStorageContext);
   const apolloClient = useApolloClient()
-  console.log("loggg", data?.me?.username)
+  console.log("logindata:::", data?.me?.username)
 
   const signOutHandler = async () => {
     await authStorage.removeAccessToken()

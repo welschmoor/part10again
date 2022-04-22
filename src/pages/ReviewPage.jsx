@@ -54,9 +54,7 @@ const ReviewPage = () => {
       }
     })
 
-    // console.log('/repository/${response.data.repositoryId}<><>', `/repository/${response.data.repositoryId}`)
     console.log('response.data<><>', response.data.createReview.repositoryId)
-
     navigate(`/repository/${response.data.createReview.repositoryId}`)
   };
 
