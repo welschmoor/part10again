@@ -9,7 +9,7 @@ const RepositoryList = () => {
   const [orderBy, setOrderBy] = useState('CREATED_AT') // 'CREATED_AT' 'RATING_AVERAGE'
   const [orderDirection, setOrderDirection] = useState('DESC') // 'DESC' 'ASC'
   const [searchKeywordST, setSearchKeywordST] = useState('')
-  const [searchKeywordDeb] = useDebounce(searchKeywordST, 3000);
+  const [searchKeywordDeb] = useDebounce(searchKeywordST, 2000);
   const { data, error, loading } = useGetData(orderBy, orderDirection, searchKeywordDeb)
 
 

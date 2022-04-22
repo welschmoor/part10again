@@ -1,9 +1,9 @@
 import { View, FlatList, Text, StyleSheet } from "react-native"
 import RepositoryItem from "./RepositoryItem"
 import { Picker } from '@react-native-picker/picker';
-import { useState, memo } from 'react'
+import { useState } from 'react'
 import { Searchbar } from 'react-native-paper';
-
+import { SearchBarMemoized } from "./SearchBar"
 
 
 const styles = StyleSheet.create({
@@ -26,15 +26,6 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj }) => {
 
   const onChangeSearch = query => { return searchObj.setSearchKeywordST(query) }
 
-  const SearchBarComponent = () => {
-    return (
-      <Searchbar
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchObj.searchKeywordST}
-      />
-    )
-  }
 
   const pickerFn = (itemValue) => {
     if (itemValue === "dataasc") {
@@ -68,21 +59,24 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj }) => {
     )
   }
 
-  const PickerAndSearchbar = () => {
-    return (
-      <>
-        <SearchBarComponent />
-        <PickerComponent />
-      </>
-    )
-  }
-
   return (
     <>
       {/* <Amisignedin /> */}
       <FlatList
         ListHeaderComponent={
-          <PickerAndSearchbar />
+          <>
+            <SearchBarMemoized onChangeSearch={onChangeSearch} searchObj={searchObj} />
+            <Picker
+              selectedValue={selectedSorting}
+              onValueChange={(itemValue, itemIndex) =>
+                pickerFn(itemValue)
+              }>
+              <Picker.Item label="Sort by date - ascending" value="dataasc" />
+              <Picker.Item label="Sort by date - descending" value="datadesc" />
+              <Picker.Item label="Sort by rating - ascending" value="ratingasc" />
+              <Picker.Item label="Sort by rating - descending" value="ratingdesc" />
+            </Picker>
+          </>
         }
         keyExtractor={(item) => item.id}
         data={repositoryNodes}
