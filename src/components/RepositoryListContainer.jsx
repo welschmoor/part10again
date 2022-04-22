@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 });
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ data, loading, orderObj, searchObj }) => {
+const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReach }) => {
   // const { repositories, loading, refetch } = useRepositories() // REST API
   const [selectedSorting, setSelectedSorting] = useState('datadesc');
 
@@ -80,6 +80,8 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj }) => {
         }
         keyExtractor={(item) => item.id}
         data={repositoryNodes}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
         ItemSeparatorComponent={ItemSeparator}
         // other props
         renderItem={({ item }) => {
