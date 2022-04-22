@@ -1,14 +1,17 @@
 import { View, FlatList, Text, StyleSheet } from "react-native"
 import RepositoryItem from "./RepositoryItem"
 import { Picker } from '@react-native-picker/picker';
-import { useState } from 'react'
+import { useState, memo } from 'react'
+import { Searchbar } from 'react-native-paper';
+
+
 
 const styles = StyleSheet.create({
   separator: { height: 10 },
 });
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ data, loading, orderObj }) => {
+const RepositoryListContainer = ({ data, loading, orderObj, searchObj }) => {
   // const { repositories, loading, refetch } = useRepositories() // REST API
   const [selectedSorting, setSelectedSorting] = useState('datadesc');
 
@@ -19,6 +22,18 @@ const RepositoryListContainer = ({ data, loading, orderObj }) => {
 
   if (loading) {
     return (<View><Text>Loading...</Text></View>)
+  }
+
+  const onChangeSearch = query => { return searchObj.setSearchKeywordST(query) }
+
+  const SearchBarComponent = () => {
+    return (
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchObj.searchKeywordST}
+      />
+    )
   }
 
   const pickerFn = (itemValue) => {
@@ -53,11 +68,22 @@ const RepositoryListContainer = ({ data, loading, orderObj }) => {
     )
   }
 
+  const PickerAndSearchbar = () => {
+    return (
+      <>
+        <SearchBarComponent />
+        <PickerComponent />
+      </>
+    )
+  }
+
   return (
     <>
       {/* <Amisignedin /> */}
       <FlatList
-        ListHeaderComponent={PickerComponent}
+        ListHeaderComponent={
+          <PickerAndSearchbar />
+        }
         keyExtractor={(item) => item.id}
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
