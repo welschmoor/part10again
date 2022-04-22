@@ -16,11 +16,11 @@ const RepositoryItem = ({ item }) => {
     <View style={styles.container} testID="repositoryItem">
       {/* <Text>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</Text> */}
       <PicAndText>
-        <RepositoryImage imgURL={item.ownerAvatarUrl} />
+        <RepositoryImage imgURL={item?.ownerAvatarUrl} />
         <View style={styles.needsShrinking}>
-          <Link to={`/repository/${item.id}`}><Text style={styles.headerText}>{item.fullName}</Text></Link>
-          <Text style={styles.descriptionText}>{item.description}</Text>
-          <View style={styles.languageButton}><Text style={styles.languageText}>{item.language}</Text></View>
+          <Link to={`/repository/${item?.id}`}><Text style={styles.headerText}>{item?.fullName}</Text></Link>
+          <Text style={styles.descriptionText}>{item?.description}</Text>
+          <View style={styles.languageButton}><Text style={styles.languageText}>{item?.language}</Text></View>
         </View>
       </PicAndText>
 
@@ -32,14 +32,14 @@ const RepositoryItem = ({ item }) => {
 
       </FlexCon>
       <FlexCon>
-        <FCIC><Text style={styles.boldText} id="stars">{reduceNum(item.stargazersCount)}</Text></FCIC>
-        <FCIC><Text style={styles.boldText}> {reduceNum(item.forksCount)}</Text></FCIC>
-        <FCIC><Text style={styles.boldText}> {item.reviewCount}</Text></FCIC>
-        <FCIC><Text style={styles.boldText}>{item.ratingAverage}</Text></FCIC>
+        <FCIC><Text style={styles.boldText} id="stars">{reduceNum(item?.stargazersCount)}</Text></FCIC>
+        <FCIC><Text style={styles.boldText}> {reduceNum(item?.forksCount)}</Text></FCIC>
+        <FCIC><Text style={styles.boldText}> {item?.reviewCount}</Text></FCIC>
+        <FCIC><Text style={styles.boldText}>{item?.ratingAverage}</Text></FCIC>
       </FlexCon>
 
-      {item.url ? <View style={styles.gitHubBtn}>
-        <Text onPress={() => Linking.openURL(`${item.url}`)} style={styles.linkText}>Link to GitHub</Text>
+      {item?.url ? <View style={styles.gitHubBtn}>
+        <Text onPress={() => Linking.openURL(`${item?.url}`)} style={styles.linkText}>Link to GitHub</Text>
       </View> : null}
 
     </View>

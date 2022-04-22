@@ -22,12 +22,14 @@ const RepositoryInfo = ({ repository }) => {
   )
 };
 
-const ReviewList = ({ data }) => {
+const ReviewList = ({ data, onEndReach }) => {
   const reviews = data?.reviews.edges.map(each => each.node) || []
 
   return (
 
     <FlatList
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={ItemSeparator}
       data={reviews}

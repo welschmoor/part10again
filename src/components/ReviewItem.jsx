@@ -57,7 +57,7 @@ const RatingAndText = ({ children }) => {
 
 const ReviewItem = ({ item }) => {
 
-  console.log("itemReview", item)
+  // console.log("itemReview", item)
   return (
     <RatingAndText>
       <View style={s.rating}>
