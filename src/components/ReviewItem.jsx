@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { useApolloClient, useMutation } from "@apollo/client"
 import { DELETE_REVIEW } from "../graphql/mutations"
 import { AM_I_SIGNEDIN } from "../graphql/queries"
+import { Link } from "react-router-native"
 
 
 const s = StyleSheet.create({
@@ -157,9 +158,9 @@ const ReviewItem = ({ item, myOwnReviewsBool, refetch }) => {
         <View style={s.buttons}>
 
           <Pressable style={s.pressable}>
-            <Text style={s.btnText}>
-              GitHub Link
-            </Text>
+          <Link to={`/repository/${item?.repositoryId}`}><Text style={s.btnText}>
+              See full repo
+            </Text></Link>
           </Pressable>
 
           <Pressable style={[s.pressable, s.pressableRed]} onPress={createTwoButtonAlert}>
