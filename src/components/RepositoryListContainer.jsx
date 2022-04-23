@@ -15,10 +15,6 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
     ? data?.repositories?.edges.map(edge => edge.node)
     : [];
 
-  // thyis gave me a bug with fetchMore
-  // if (loading) {
-  //   return (<View><Text>Loading...</Text></View>)
-  // }
 
   const onChangeSearch = query => { return searchObj.setSearchKeywordST(query) }
 
@@ -27,7 +23,7 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
       ListHeaderComponent={
         <>
           <SearchBarMemoized onChangeSearch={onChangeSearch} searchObj={searchObj} />
-          <PickerComponent selectedSorting={selectedSorting} />
+          <PickerComponent selectedSorting={selectedSorting} orderObj={orderObj} setSelectedSorting={setSelectedSorting} />
         </>
       }
       keyExtractor={(item) => item.id}

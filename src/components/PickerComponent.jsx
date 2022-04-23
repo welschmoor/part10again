@@ -2,7 +2,7 @@
 import { Picker } from '@react-native-picker/picker';
 
 
-const PickerComponent = ({ selectedSorting }) => {
+const PickerComponent = ({ selectedSorting, setSelectedSorting, orderObj }) => {
 
   const pickerFn = (itemValue) => {
     if (itemValue === "dataasc") {

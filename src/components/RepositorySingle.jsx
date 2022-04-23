@@ -9,17 +9,10 @@ import ReviewList from "./ReviewList"
 
 const RepositorySingle = () => {
   const { id } = useParams()
+  console.log('id useParams <><>', id )
   const first = 3
 
   const { data, loading, fetchMore } = useFetchOne(first, id)
-
-  // if (loading) {
-  //   return (
-  //     <View>
-  //       <Text>Loading...</Text>
-  //     </View>
-  //   )
-  // }
 
   const onEndReach = () => {
     fetchMore()

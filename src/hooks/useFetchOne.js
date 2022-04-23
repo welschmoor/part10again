@@ -3,7 +3,7 @@ import { FETCH_ONE, GET_REPOSITORIES } from '../graphql/queries'
 
 
 const useFetchOne = (first, id) => {
-  const { data, loading, fetchMore } = useQuery(FETCH_ONE, {
+  const { data, loading, fetchMore, refetch } = useQuery(FETCH_ONE, {
     variables: {
       repositoryId: id,
       first: first || 3,
@@ -28,7 +28,7 @@ const useFetchOne = (first, id) => {
     });
   };
 
-  return { data, loading, fetchMore: handleFetchMore }
+  return { data, loading, fetchMore: handleFetchMore, refetch }
 }
 
 export default useFetchOne

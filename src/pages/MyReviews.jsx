@@ -5,7 +5,7 @@ import ReviewList from '../components/ReviewList'
 
 
 const MyReviews = () => {
-  const { data } = useMe(true)
+  const { data, refetch } = useMe(true)
   console.log("useMe data<><>", data)
 
   const onEndReach = () => {
@@ -17,7 +17,7 @@ const MyReviews = () => {
       <View style={s.textW}>
         <Text style={s.text}>My reviews</Text>
       </View>
-      <ReviewList data={data?.me} myOwnReviewsBool={true} onEndReach={onEndReach} />
+      <ReviewList data={data?.me} myOwnReviewsBool={true} onEndReach={onEndReach} refetch={refetch} />
     </View>
   )
 }
@@ -34,7 +34,7 @@ const s = StyleSheet.create({
     alignSelf: "center",
 
     fontWeight: "500",
- 
+
 
   },
   textW: {

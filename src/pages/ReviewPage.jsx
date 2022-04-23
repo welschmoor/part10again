@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { useNavigate } from "react-router-native";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../graphql/mutations";
+import { AM_I_SIGNEDIN } from "../graphql/queries";
 
 const validationSchema = yup.object().shape({
   owner: yup
@@ -51,7 +52,13 @@ const ReviewPage = () => {
     const response = await submitReview({
       variables: {
         review: review
-      }
+      },
+      refetchQueries: [{
+        query: AM_I_SIGNEDIN,
+        variables: {
+          includeReviews: true
+        }
+      }]
     })
 
     console.log('response.data<><>', response.data.createReview.repositoryId)

@@ -6,7 +6,6 @@ import { AM_I_SIGNEDIN } from '../graphql/queries';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useContext } from "react"
 import AuthStorageContext from "../contexts/AuthStorageContext"
-import useMe from '../hooks/useMe';
 
 
 const styles = StyleSheet.create({
