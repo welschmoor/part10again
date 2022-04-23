@@ -4,19 +4,14 @@ import { Picker } from '@react-native-picker/picker';
 import { useState } from 'react'
 import { Searchbar } from 'react-native-paper';
 import { SearchBarMemoized } from "./SearchBar"
+import PickerComponent from "./PickerComponent";
+import ItemSeparator from "./ItemSeparator"
 
-
-const styles = StyleSheet.create({
-  separator: { height: 10 },
-});
-const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReach }) => {
-  // const { repositories, loading, refetch } = useRepositories() // REST API
-  const [selectedSorting, setSelectedSorting] = useState('datadesc');
+  const [selectedSorting, setSelectedSorting] = useState('datadesc');  // const { repositories, loading, refetch } = useRepositories() // REST API
 
-
-  const repositoryNodes = data?.repositories  // Get the nodes from the edges array
+  const repositoryNodes = data?.repositories
     ? data?.repositories?.edges.map(edge => edge.node)
     : [];
 
@@ -27,71 +22,24 @@ const RepositoryListContainer = ({ data, loading, orderObj, searchObj, onEndReac
 
   const onChangeSearch = query => { return searchObj.setSearchKeywordST(query) }
 
-
-  const pickerFn = (itemValue) => {
-    if (itemValue === "dataasc") {
-      orderObj.setOrderBy('CREATED_AT')
-      orderObj.setOrderDirection('ASC')
-    }
-    else if (itemValue === "datadesc") {
-      orderObj.setOrderBy('CREATED_AT')
-      orderObj.setOrderDirection('DESC')
-
-    } else if (itemValue === "ratingasc") {
-      orderObj.setOrderBy('RATING_AVERAGE')
-      orderObj.setOrderDirection('ASC')
-    } else if (itemValue === "ratingdesc") {
-      orderObj.setOrderBy('RATING_AVERAGE')
-      orderObj.setOrderDirection('DESC')
-    }
-    setSelectedSorting(itemValue)
-  }
-
-  const PickerComponent = () => {
-    return (
-      <Picker
-        selectedValue={selectedSorting}
-        onValueChange={(itemValue, itemIndex) =>
-          pickerFn(itemValue)
-        }>
-        <Picker.Item label="Sort by date - newest first" value="dataasc" />
-        <Picker.Item label="Sort by date - oldest first" value="datadesc" />
-        <Picker.Item label="Sort by rating - Low to High" value="ratingasc" />
-        <Picker.Item label="Sort by rating - High to Low" value="ratingdesc" />
-      </Picker>
-    )
-  }
-
   return (
-    <>
-      {/* <Amisignedin /> */}
-      <FlatList
-        ListHeaderComponent={
-          <>
-            <SearchBarMemoized onChangeSearch={onChangeSearch} searchObj={searchObj} />
-            <Picker
-              selectedValue={selectedSorting}
-              onValueChange={(itemValue, itemIndex) =>
-                pickerFn(itemValue)
-              }>
-              <Picker.Item label="Sort by date - newest first" value="datadesc" />
-              <Picker.Item label="Sort by date - oldest first" value="dataasc" />
-              <Picker.Item label="Sort by rating - Low to High" value="ratingasc" />
-              <Picker.Item label="Sort by rating - High to Low" value="ratingdesc" />
-            </Picker>
-          </>
-        }
-        keyExtractor={(item) => item.id}
-        data={repositoryNodes}
-        onEndReached={onEndReach}
-        onEndReachedThreshold={0.5}
-        ItemSeparatorComponent={ItemSeparator}
-        // other props
-        renderItem={({ item }) => {
-          return <RepositoryItem item={item} />
-        }}
-      />
-    </>
+    <FlatList
+      ListHeaderComponent={
+        <>
+          <SearchBarMemoized onChangeSearch={onChangeSearch} searchObj={searchObj} />
+          <PickerComponent selectedSorting={selectedSorting} />
+        </>
+      }
+      keyExtractor={(item) => item.id}
+      data={repositoryNodes}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
+      ItemSeparatorComponent={ItemSeparator}
+      // other props
+      renderItem={({ item }) => {
+        return <RepositoryItem item={item} />
+      }}
+    />
   );
 };
 

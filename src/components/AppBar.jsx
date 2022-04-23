@@ -6,6 +6,7 @@ import { AM_I_SIGNEDIN } from '../graphql/queries';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useContext } from "react"
 import AuthStorageContext from "../contexts/AuthStorageContext"
+import useMe from '../hooks/useMe';
 
 
 const styles = StyleSheet.create({
@@ -52,6 +53,7 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <Link to="/" style={styles.linkStyle}><Text style={styles.text}>Home</Text></Link>
+        {data?.me?.username && <Link to="/myreviews" style={styles.linkStyle}><Text style={styles.text}>My Reviews</Text></Link>}
         <Link to="/about" style={styles.linkStyle} ><Text style={styles.text}>About</Text></Link>
         {!data?.me?.username ? <><Link to="/signin" style={styles.linkStyle}><Text style={styles.text}>Sign In</Text></Link>
           <Link to="/signup" style={styles.linkStyle}><Text style={styles.text}>Sign Up</Text></Link></> : null}

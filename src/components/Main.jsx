@@ -10,7 +10,7 @@ import SignupRedirect from './SignupRedirect';
 import About from './About';
 import RepositorySingle from './RepositorySingle'
 import ReviewPage from '../pages/ReviewPage';
-
+import MyReviews from '../pages/MyReviews'
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +27,7 @@ const Main = () => {
       <AppBar />
       <Routes>
         <Route path="/about" element={<About />} exact />
+        <Route path="/myreviews" element={<MyReviews />} exact />
         <Route path="/review" element={<ReviewPage />} exact />
         <Route path="/repository/:id" element={<RepositorySingle />} exact />
         <Route path="/signin" element={<SignIn />} exact />

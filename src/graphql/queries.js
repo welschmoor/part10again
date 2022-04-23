@@ -32,10 +32,32 @@ export const GET_REPOSITORIES = gql`
 
 
 export const AM_I_SIGNEDIN = gql`
- query Me {
+ query Me($includeReviews: Boolean = false) {
     me {
       id
       username
+
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            repositoryId
+            user {
+              id
+              username
+            }
+          }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+        }
+      }
     }
   }
 `
