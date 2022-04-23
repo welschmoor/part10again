@@ -22,7 +22,7 @@ const RepositoryInfo = ({ repository }) => {
   )
 };
 
-const ReviewList = ({ data, onEndReach }) => {
+const ReviewList = ({ data, onEndReach, myOwnReviewsBool = false }) => {
   const reviews = data?.reviews.edges.map(each => each.node) || []
 
   return (
@@ -33,7 +33,7 @@ const ReviewList = ({ data, onEndReach }) => {
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={ItemSeparator}
       data={reviews}
-      ListHeaderComponent={() => <RepositoryInfo repository={data} />}
+      ListHeaderComponent={ !myOwnReviewsBool && (() => <RepositoryInfo repository={data} />)}
       renderItem={({ item }) => {
         return <ReviewItem item={item} />
       }}
